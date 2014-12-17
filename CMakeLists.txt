@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(sigue_lineas_opencv)
+find_package(catkin REQUIRED
+  genmsg
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+)
+find_package(OpenCV)
+catkin_package()
+
+
+include_directories(
+${catkin_INCLUDE_DIRS}
+${OpenCV_INCLUDE_DIRS}
+)
+
+
+## Declare a cpp executable
+add_executable(sigue_lineas_opencv_node src/main.cpp)
+
+## Add cmake target dependencies of the executable/library
+## as an example, message headers may need to be generated before nodes
+# add_dependencies(practica2_node practica2_generate_messages_cpp)
+
+## Specify libraries to link a library or executable target against
+ target_link_libraries(sigue_lineas_opencv_node
+
+   ${catkin_LIBRARIES}
+   ${OpenCV_LIBRARIES}
+ )
+
