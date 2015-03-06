@@ -15,7 +15,15 @@ include_directories(
 ${catkin_INCLUDE_DIRS}
 ${OpenCV_INCLUDE_DIRS}
 )
+include_directories(include)
 
+## Declare a cpp library
+add_library(sigue_lineas  src/sigue_lineas.cpp)
+# )
+target_link_libraries(sigue_lineas
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
+)
 
 ## Declare a cpp executable
 add_executable(sigue_lineas_opencv_node src/main.cpp)
@@ -26,7 +34,7 @@ add_executable(sigue_lineas_opencv_node src/main.cpp)
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(sigue_lineas_opencv_node
-
+    sigue_lineas
    ${catkin_LIBRARIES}
    ${OpenCV_LIBRARIES}
  )
